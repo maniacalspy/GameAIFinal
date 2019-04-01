@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
             YMoveSpeed *= 2;
         }
         Vector3 MoveVector = new Vector3(XMoveSpeed, 0, YMoveSpeed);
-        MoveSpeed = MoveVector.magnitude;
+        MoveSpeed = thisController.velocity.magnitude;
         thisController.SimpleMove(MoveVector);
         if (MoveSpeed > BaseMoveSpeed/2)
         {

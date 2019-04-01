@@ -6,7 +6,6 @@ using UnityEngine.Events;
 public class SoundEnemy : MonoBehaviour
 {
     public UnityAction PlayerFoundAction;
-    float MoveSpeed;
     GameObject Player;
     Vector3 SearchPoint;
     Rigidbody rb;
@@ -16,7 +15,6 @@ public class SoundEnemy : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         SearchPoint = new Vector3(0, 0, 0);
         Player = GameObject.Find("Player");
-        MoveSpeed = 5f;
         PlayerFoundAction += OnPlayerFound;
     }
 
@@ -25,7 +23,7 @@ public class SoundEnemy : MonoBehaviour
     {
         if (SearchPoint.magnitude > 0)
         {
-            rb.MovePosition((transform.position + (SearchPoint - transform.position) * Time.deltaTime));
+            rb.MovePosition(transform.position + (SearchPoint - transform.position) * Time.deltaTime);
             if (Mathf.Abs((SearchPoint - transform.position).magnitude) < 1)
             {
                 SearchPoint = new Vector3(0, 0, 0);
