@@ -25,9 +25,8 @@ public class SoundEnemy : MonoBehaviour
     {
         if (SearchPoint.magnitude > 0)
         {
-            rb.AddForce(SearchPoint - transform.position);
+            rb.MovePosition((transform.position + (SearchPoint - transform.position) * Time.deltaTime));
             if (Mathf.Abs((SearchPoint - transform.position).magnitude) < .5) SearchPoint = new Vector3(0, 0, 0);
-            //rb.MovePosition((SearchPoint));
         }
     }
 
