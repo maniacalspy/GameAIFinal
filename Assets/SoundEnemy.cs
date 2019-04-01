@@ -26,7 +26,11 @@ public class SoundEnemy : MonoBehaviour
         if (SearchPoint.magnitude > 0)
         {
             rb.MovePosition((transform.position + (SearchPoint - transform.position) * Time.deltaTime));
-            if (Mathf.Abs((SearchPoint - transform.position).magnitude) < .5) SearchPoint = new Vector3(0, 0, 0);
+            if (Mathf.Abs((SearchPoint - transform.position).magnitude) < 1)
+            {
+                SearchPoint = new Vector3(0, 0, 0);
+                OnPlayerLost();
+            }
         }
     }
 
@@ -38,6 +42,6 @@ public class SoundEnemy : MonoBehaviour
 
     void OnPlayerLost()
     {
-
+        GetComponent<Renderer>().material.color = Color.white;
     }
 }
