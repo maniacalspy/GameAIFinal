@@ -54,8 +54,11 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log(EnemiesToNotify.Length);
         foreach(Collider enemy in EnemiesToNotify)
         {
-            SoundEnemy SEScript = enemy.GetComponent<SoundEnemy>();
-            SEScript.PlayerFoundAction.Invoke();
+            if (enemy.tag == "SoundEnemy")
+            {
+                SoundEnemy SEScript = enemy.GetComponent<SoundEnemy>();
+                SEScript.PlayerFoundAction.Invoke();
+            }
         }
     }
 }
