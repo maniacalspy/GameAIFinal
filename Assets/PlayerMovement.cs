@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
     void SendSound()
     {
         Collider[] EnemiesToNotify = Physics.OverlapSphere(transform.position, SoundRadius, 1 << LayerMask.NameToLayer("Enemies"));
-        Debug.Log(EnemiesToNotify.Length);
+        //Debug.Log(EnemiesToNotify.Length);
         foreach(Collider enemy in EnemiesToNotify)
         {
             if (enemy.tag == "SoundEnemy")

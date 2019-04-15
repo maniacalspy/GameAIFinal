@@ -39,7 +39,9 @@ public class LOSEnemy : MonoBehaviour
             //Debug.Log(Vector3.Angle(Player.transform.position - transform.position, transform.forward));
             if (Vector3.Angle(Player.transform.position - transform.position, transform.forward) < FOV)
             {
-                OnPlayerFound();
+                RaycastHit Hitinfo;
+                Physics.Raycast(transform.position, Player.transform.position-transform.position, out Hitinfo, DetectRange);
+                if (Hitinfo.collider.gameObject.tag == "Player") OnPlayerFound();
             }
         }
 

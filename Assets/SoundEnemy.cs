@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
 public class SoundEnemy : MonoBehaviour
 {
     public UnityAction PlayerFoundAction;
@@ -10,6 +12,8 @@ public class SoundEnemy : MonoBehaviour
     Vector3 SearchPoint;
     Rigidbody rb;
     States CurrentState;
+    NavMeshAgent thisAgent;
+    
 
     enum States
     {
@@ -25,6 +29,7 @@ public class SoundEnemy : MonoBehaviour
         SearchPoint = new Vector3(0, 0, 0);
         Player = GameObject.Find("Player");
         PlayerFoundAction += OnPlayerFound;
+        thisAgent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
@@ -39,7 +44,7 @@ public class SoundEnemy : MonoBehaviour
             case States.Chasing:
                 if (SearchPoint.magnitude > 0)
                 {
-                    rb.MovePosition(transform.position + (SearchPoint - transform.position) * Time.deltaTime);
+                    thisAgent.SetDestination(SearchPoint);
                     if (Mathf.Abs((SearchPoint - transform.position).magnitude) < 1)
                     {
                         SearchPoint = new Vector3(0, 0, 0);
