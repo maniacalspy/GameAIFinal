@@ -47,48 +47,19 @@ public class Grid : MonoBehaviour
     public List<Node> GetNeighboringNodes(Node a_NeighborNode)
     {
         List<Node> NeighborList = new List<Node>();//Make a new list of all available neighbors.
-        int icheckX;//Variable to check if the XPosition is within range of the node array to avoid out of range errors.
-        int icheckY;//Variable to check if the YPosition is within range of the node array to avoid out of range errors.
 
-        //Check the right side of the current node.
-        icheckX = a_NeighborNode.GridX + 1;
-        icheckY = a_NeighborNode.GridY;
-        if (icheckX >= 0 && icheckX < GridSizeX)//If the XPosition is in range of the array
-        {
-            if (icheckY >= 0 && icheckY < GridSizeY)//If the YPosition is in range of the array
+        for (int icheckX = a_NeighborNode.GridX - 1; icheckX <= a_NeighborNode.GridX + 1; icheckX++) {
+            for (int icheckY = a_NeighborNode.GridY - 1; icheckY <= a_NeighborNode.GridY + 1; icheckY++)
             {
-                NeighborList.Add(Nodes[icheckX, icheckY]);//Add the grid to the available neighbors list
+                if (icheckX >= 0 && icheckX < GridSizeX)//If the XPosition is in range of the array
+                {
+                    if (icheckY >= 0 && icheckY < GridSizeY)//If the YPosition is in range of the array
+                    {
+                        NeighborList.Add(Nodes[icheckX, icheckY]);//Add the grid to the available neighbors list
+                    }
+                }
             }
-        }
-        //Check the Left side of the current node.
-        icheckX = a_NeighborNode.GridX - 1;
-        icheckY = a_NeighborNode.GridY;
-        if (icheckX >= 0 && icheckX < GridSizeX)//If the XPosition is in range of the array
-        {
-            if (icheckY >= 0 && icheckY < GridSizeY)//If the YPosition is in range of the array
-            {
-                NeighborList.Add(Nodes[icheckX, icheckY]);//Add the grid to the available neighbors list
-            }
-        }
-        //Check the Top side of the current node.
-        icheckX = a_NeighborNode.GridX;
-        icheckY = a_NeighborNode.GridY + 1;
-        if (icheckX >= 0 && icheckX < GridSizeX)//If the XPosition is in range of the array
-        {
-            if (icheckY >= 0 && icheckY < GridSizeY)//If the YPosition is in range of the array
-            {
-                NeighborList.Add(Nodes[icheckX, icheckY]);//Add the grid to the available neighbors list
-            }
-        }
-        //Check the Bottom side of the current node.
-        icheckX = a_NeighborNode.GridX;
-        icheckY = a_NeighborNode.GridY - 1;
-        if (icheckX >= 0 && icheckX < GridSizeX)//If the XPosition is in range of the array
-        {
-            if (icheckY >= 0 && icheckY < GridSizeY)//If the YPosition is in range of the array
-            {
-                NeighborList.Add(Nodes[icheckX, icheckY]);//Add the grid to the available neighbors list
-            }
+
         }
 
         return NeighborList;//Return the neighbors list.

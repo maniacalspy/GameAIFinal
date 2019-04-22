@@ -6,8 +6,6 @@ public class AStarNav : MonoBehaviour
 {
 
     Grid GridComponent;
-    public Transform StartPosition;
-    public Transform TargetPosition;
 
     private void Awake()
     {
@@ -20,14 +18,14 @@ public class AStarNav : MonoBehaviour
         //FindPath(StartPosition.position, TargetPosition.position);
     }
 
-    void FindPath(Vector3 PathStartPosition, Vector3 EndPosition)
+    public List<Node> FindPath(Vector3 PathStartPosition, Vector3 EndPosition)
     {
         Node StartNode = GridComponent.NodeFromWorldPoint(PathStartPosition);
         Node TargetNode = GridComponent.NodeFromWorldPoint(EndPosition);
 
         List<Node> OpenNodes = new List<Node>();
         List<Node> ClosedNodes = new List<Node>();
-
+        List<Node> OutputPath = new List<Node>();
         OpenNodes.Add(StartNode);
 
         while (OpenNodes.Count > 0)
@@ -47,7 +45,7 @@ public class AStarNav : MonoBehaviour
 
             if (CurrentNode == TargetNode)
             {
-                GetFinalPath(StartNode, TargetNode);
+                OutputPath = GetFinalPath(StartNode, TargetNode);
             }
 
             foreach(Node NeighborNode in GridComponent.GetNeighboringNodes(CurrentNode))
@@ -72,9 +70,10 @@ public class AStarNav : MonoBehaviour
                 }
             }
         }
+        return OutputPath;
     }
 
-    void GetFinalPath(Node StartingNode, Node EndingNode)
+    List<Node> GetFinalPath(Node StartingNode, Node EndingNode)
     {
         List<Node> path = new List<Node>();
         Node CurrentNode = EndingNode;
@@ -87,6 +86,7 @@ public class AStarNav : MonoBehaviour
         path.Reverse();
 
         GridComponent.FinalPath = path;
+        return path;
     }
 
     int CalcDistance(Node NodeFrom, Node NodeTo)
