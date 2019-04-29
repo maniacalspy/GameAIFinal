@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -6,6 +7,7 @@ using UnityEngine.Events;
 public class LOSEnemy : MonoBehaviour
 {
     public UnityAction PlayerFoundAction;
+    public event Action<Vector3> NotifiedAction;
     AStarNav Pathfinding;
     GameObject Player;
     Vector3 SearchPoint;
@@ -15,7 +17,7 @@ public class LOSEnemy : MonoBehaviour
     float FOV;
     States CurrentState;
 
-    enum States
+    public enum States
     {
         Idle,
         Search,
@@ -34,7 +36,7 @@ public class LOSEnemy : MonoBehaviour
         DetectRange = 10f;
         FOV = 20;
         PlayerFoundAction += OnPlayerFound;
-
+        NotifiedAction += OnNotified;
     }
 
     // Update is called once per frame
@@ -92,6 +94,10 @@ public class LOSEnemy : MonoBehaviour
             
         }
     }
+    public States GetState()
+    {
+        return this.CurrentState;
+    }
 
     void OnPlayerFound()
     {
@@ -99,13 +105,39 @@ public class LOSEnemy : MonoBehaviour
         SearchPoint = Player.transform.position;
         CurrentState = States.Chasing;
         SearchPath = Pathfinding.FindPath(transform.position, SearchPoint);
+        NotifyNearbyEnemies();
     }
+
+    void NotifyNearbyEnemies()
+    {
+        Collider[] EnemiesInRange = Physics.OverlapSphere(transform.position, 5f, ~(LayerMask.NameToLayer("Enemies")));
+        foreach (Collider Enemy in EnemiesInRange)
+        {
+            if (Enemy.gameObject.tag == "LOSEnemy" && Enemy.gameObject != this.gameObject)
+            {
+                LOSEnemy EnemyScript = Enemy.gameObject.GetComponent<LOSEnemy>();
+                if (EnemyScript.GetState() != States.Chasing)
+                {
+                    EnemyScript.NotifiedAction(transform.position);
+                }
+            }
+        }
+
+    }
+
+    void OnNotified(Vector3 NotifierPosition)
+    {
+        GetComponent<Renderer>().material.color = Color.red;
+        SearchPoint = NotifierPosition;
+        CurrentState = States.Chasing;
+        SearchPath = Pathfinding.FindPath(transform.position, SearchPoint);
+    }
+
 
     void OnPlayerLost()
     {
         GetComponent<Renderer>().material.color = Color.black;
         CurrentState = States.Search;
         SearchPoint = transform.position - transform.forward;
-        //TODO: A* THE ENEMY BACK TO THEIR STARTING POSITION/NEXT WAYPOINT
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -35,6 +36,7 @@ public class MovementEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CheckTerritory();
         if (GeometryUtility.TestPlanesAABB(TerritoryPlanes, Player.GetComponent<BoxCollider>().bounds))
         {
             CharacterController PlayerController = Player.GetComponent<CharacterController>();
@@ -43,6 +45,25 @@ public class MovementEnemy : MonoBehaviour
         StateUpdate();
         
 
+    }
+
+
+    void CheckTerritory()
+    {
+        Collider[] CollidersInTerritory = Physics.OverlapBox(TerritoryCenter, new Vector3(TerritoryRadius, TerritoryRadius, TerritoryRadius), Quaternion.identity);
+        Debug.Log(CollidersInTerritory.Length);
+        foreach (Collider Object in CollidersInTerritory)
+        {
+            Debug.Log(Object);
+            Rigidbody ObjectRBody = Object.GetComponent<Rigidbody>();
+            if (ObjectRBody != null)
+            {
+                if (GeometryUtility.TestPlanesAABB(TerritoryPlanes, Object.bounds))
+                {
+                    if (ObjectRBody.velocity.magnitude >= Detectspeed) OnObjectFound(Object.transform.position);
+                }
+            }
+        }
     }
 
     void StateUpdate()
@@ -91,6 +112,13 @@ public class MovementEnemy : MonoBehaviour
     {
         GetComponent<Renderer>().material.color = Color.red;
         SearchPoint = Player.transform.position;
+        CurrentState = States.Chasing;
+    }
+
+    void OnObjectFound(Vector3 ObjectPosition)
+    {
+        GetComponent<Renderer>().material.color = Color.red;
+        SearchPoint = ObjectPosition;
         CurrentState = States.Chasing;
     }
     void OnPlayerLost()

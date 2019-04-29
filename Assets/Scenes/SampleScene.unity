@@ -195,9 +195,9 @@ GameObject:
   - component: {fileID: 208875032}
   - component: {fileID: 208875031}
   - component: {fileID: 208875030}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LOSEnemy
-  m_TagString: Untagged
+  m_TagString: LOSEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -228,7 +228,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 32
   m_CollisionDetection: 0
 --- !u!65 &208875032
 BoxCollider:
@@ -260,7 +260,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a6d704aa90dbd0c46b1e6119ec7d0fdf, type: 2}
+  - {fileID: 2100000, guid: af913ebea816f5f4c8cc7e36be414799, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -296,7 +296,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 208875029}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -10, y: 0.5, z: 11}
+  m_LocalPosition: {x: -8.41, y: 0.5, z: 8.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -514,7 +514,7 @@ Transform:
   m_GameObject: {fileID: 293909097}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.04, y: 1, z: 6.74}
-  m_LocalScale: {x: 15, y: 2, z: 1}
+  m_LocalScale: {x: 20.2605, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 12
@@ -608,7 +608,6 @@ GameObject:
   - component: {fileID: 316898087}
   - component: {fileID: 316898086}
   - component: {fileID: 316898085}
-  - component: {fileID: 316898084}
   - component: {fileID: 316898089}
   - component: {fileID: 316898090}
   m_Layer: 10
@@ -618,18 +617,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &316898084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 316898083}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a261c6b09223ae4c996358e38a59ce9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!135 &316898085
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -716,7 +703,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 32
   m_CollisionDetection: 0
 --- !u!114 &316898090
 MonoBehaviour:
@@ -1135,9 +1122,9 @@ GameObject:
   - component: {fileID: 765751953}
   - component: {fileID: 765751952}
   - component: {fileID: 765751951}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LOSEnemy (1)
-  m_TagString: Untagged
+  m_TagString: LOSEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1168,7 +1155,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 32
   m_CollisionDetection: 0
 --- !u!65 &765751953
 BoxCollider:
@@ -1200,7 +1187,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a6d704aa90dbd0c46b1e6119ec7d0fdf, type: 2}
+  - {fileID: 2100000, guid: af913ebea816f5f4c8cc7e36be414799, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1477,7 +1464,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 32
   m_CollisionDetection: 0
 --- !u!114 &898294327
 MonoBehaviour:
@@ -1501,7 +1488,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5000001
-  m_Speed: 3.5
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -1682,9 +1669,9 @@ GameObject:
   - component: {fileID: 1991787660}
   - component: {fileID: 1991787659}
   - component: {fileID: 1991787658}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LOSEnemy (2)
-  m_TagString: Untagged
+  m_TagString: LOSEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1715,7 +1702,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 32
   m_CollisionDetection: 0
 --- !u!65 &1991787660
 BoxCollider:
@@ -1747,7 +1734,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a6d704aa90dbd0c46b1e6119ec7d0fdf, type: 2}
+  - {fileID: 2100000, guid: af913ebea816f5f4c8cc7e36be414799, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1783,7 +1770,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1991787657}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -12.58, y: 0.5, z: 13.79}
+  m_LocalPosition: {x: -12.58, y: 0.5, z: 4.81}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

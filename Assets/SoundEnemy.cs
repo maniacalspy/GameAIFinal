@@ -8,6 +8,7 @@ using UnityEngine.AI;
 public class SoundEnemy : MonoBehaviour
 {
     public UnityAction PlayerFoundAction;
+    public UnityAction NotifiedAction;
     GameObject Player;
     Vector3 SearchPoint;
     Rigidbody rb;
@@ -52,7 +53,6 @@ public class SoundEnemy : MonoBehaviour
                     }
                 }
                 break;
-
         }
     }
 
@@ -62,7 +62,6 @@ public class SoundEnemy : MonoBehaviour
         SearchPoint = Player.transform.position;
         CurrentState = States.Chasing;
     }
-
     void OnPlayerLost()
     {
         GetComponent<Renderer>().material.color = Color.white;

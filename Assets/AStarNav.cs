@@ -5,11 +5,11 @@ using UnityEngine;
 public class AStarNav : MonoBehaviour
 {
 
-    Grid GridComponent;
+    AStarGrid GridComponent;
 
     private void Awake()
     {
-        GridComponent = GetComponent<Grid>();
+        GridComponent = GetComponent<AStarGrid>();
     }
 
     // Update is called once per frame

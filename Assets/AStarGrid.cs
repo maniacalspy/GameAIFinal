@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grid : MonoBehaviour
+public class AStarGrid : MonoBehaviour
 {
 
     public Transform StartPosition;
