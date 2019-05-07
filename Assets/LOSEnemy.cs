@@ -30,7 +30,7 @@ public class LOSEnemy : MonoBehaviour
         CurrentState = States.Idle;
         rb = GetComponent<Rigidbody>();
         SearchPoint = new Vector3(0, 0, 0);
-        Pathfinding = GameObject.Find("Manager").GetComponent<AStarNav>();
+        Pathfinding = GameObject.FindGameObjectWithTag("Manager").GetComponent<AStarNav>();
         SearchPath = new List<Node>();
         Player = GameObject.Find("Player");
         DetectRange = 10f;

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SoundEnemy
   - LOSEnemy
+  - Manager
   layers:
   - Default
   - TransparentFX
