@@ -66,6 +66,5 @@ public class SoundEnemy : MonoBehaviour
     {
         GetComponent<Renderer>().material.color = Color.white;
         CurrentState = States.Idle;
-        //TODO: A* THE ENEMY BACK TO THEIR STARTING POSITION/NEXT WAYPOINT
     }
 }
